@@ -42,7 +42,7 @@ services:
     image: pstas/indyscan-daemon:latest
     container_name: indyscan-daemon
     volumes:
-    - ${HOME}/.indy_client:/home/indyscan/.indy_client
+    - ${HOME}/.indy_client/pool:/home/indyscan/.indy_client/pool
     networks:
     - indynet
     depends_on:

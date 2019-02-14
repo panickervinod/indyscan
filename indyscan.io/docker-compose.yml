@@ -49,8 +49,6 @@ services:
     environment:
     - URL_MONGO=mongodb://mongo.indynet:27017
     - INDY_NETWORKS=${INDY_NETWORKS}
-    ports:
-    - '3000:3000'
 
 
 volumes:

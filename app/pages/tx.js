@@ -13,10 +13,13 @@ const pageSize = 20;
 class Tx extends Component {
 
 
-    static getBaseUrl(req) {
-        return req ? `${req.protocol}://${req.get('Host')}` : '';
+    static getProtocol(req) {
+        return (req && req.headers['X-Forwarded-Server']) ? 'https' : req.protocol;
     }
 
+    static getBaseUrl(req) {
+        return req ? `${this.getProtocol(req)}://${req.get('Host')}` : '';
+    }
     static async getInitialProps({req, query}) {
         const {network, txType, seqNo} = query;
         const baseUrl = this.getBaseUrl(req);

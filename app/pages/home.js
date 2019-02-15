@@ -8,8 +8,12 @@ import TxPreviewList from "../components/TxPreviewList/TxPreviewList";
 
 class HomePage extends Component {
 
+    static getProtocol(req) {
+        return (req && req.headers['X-Forwarded-Server']) ? 'https' : req.protocol;
+    }
+
     static getBaseUrl(req) {
-        return req ? `${req.protocol}://${req.get('Host')}` : '';
+        return req ? `${this.getProtocol(req)}://${req.get('Host')}` : '';
     }
 
     static async getInitialProps({req, query}) {

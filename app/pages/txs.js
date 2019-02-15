@@ -10,9 +10,12 @@ import {getDefaultNetwork} from "../api-client";
 
 class Txs extends Component {
 
+    static getProtocol(req) {
+        return (req && req.headers['X-Forwarded-Server']) ? 'https' : req.protocol;
+    }
 
     static getBaseUrl(req) {
-        return req ? `${req.protocol}://${req.get('Host')}` : '';
+        return req ? `${this.getProtocol(req)}://${req.get('Host')}` : '';
     }
 
     handleClick(e, data) {

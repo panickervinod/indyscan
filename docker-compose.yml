@@ -13,7 +13,6 @@ services:
     - 27017:27017
 
   indyscan:
-    read_only: true
     image: indyscan:latest-local
     container_name: indyscan-webapp
     networks:
@@ -27,7 +26,6 @@ services:
     - '3000:3000'
 
   indyscan-daemon:
-    read_only: true
     image: indyscan-daemon:latest-local
     container_name: indyscan-daemon
     volumes:

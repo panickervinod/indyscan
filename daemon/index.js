@@ -27,11 +27,9 @@ async function run() {
             try {
                 indyClient = await createIndyClient(NETWORK, `sovrinscan-${NETWORK}`);
             } catch (err) {
-                console.error(err)
+                console.error(`Something when wrong creating indy client for network '${NETWORK}'. Details:`);
+                console.error(err);
                 console.error(err.stack);
-                console.error(`Something when wrong creating indy client for network ${NETWORK}`);
-                console.info(`Will try to continue setting up other networks.`);
-                continue;
             }
             const txCollectionDomain = storageManager.getTxCollection(NETWORK, storage.txTypes.domain);
             const txCollectionPool   = storageManager.getTxCollection(NETWORK, storage.txTypes.pool);

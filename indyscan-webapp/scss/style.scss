@@ -1,0 +1,76 @@
+@import "_vars.scss";
+
+nav {
+  padding: 10px;
+
+  a {
+    padding: 10px;
+    text-decoration: none;
+    color: darkturquoise;
+  }
+}
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave {
+  0%, 100% {
+    transform: rotate(0)
+  }
+  20%, 60% {
+    transform: rotate(-25deg)
+  }
+  40%, 80% {
+    transform: rotate(10deg)
+  }
+}
+
+@media(max-width: 500px) {
+  .github-corner:hover .octo-arm {
+    animation: none
+  }
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out
+  }
+}
+
+#pageanimation {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+/* appear - on page load */
+.pageanimation-appear {
+  opacity: 0;
+  z-index: 1;
+}
+.pageanimation-appear.pageanimation-appear-active {
+  opacity: 1;
+  transition: opacity 300ms linear;
+}
+
+#txsanimation {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+/* appear - on page load */
+.txsanimation-appear {
+  opacity: 0;
+  z-index: 1;
+}
+.txsanimation-appear.txsanimation-appear-active {
+  opacity: 1;
+  transition: opacity 300ms linear;
+}
+
+.data-content {
+  font-family: "Lucida Console", Monaco, monospace
+}
+
+
+.home-networkinfo {
+  font-size: 0.95em;
+  color: black;
+}

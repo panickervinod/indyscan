@@ -1,20 +1,42 @@
 {
   "name": "indyscan-storage",
-  "version": "1.0.0",
+  "version": "4.1.1",
+  "author": "Patrik Staš",
+  "license": "ISC",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "standard",
+    "lint:fix": "standard --fix",
+    "test": "jest test",
+    "test:unit": "jest test/unit",
+    "test:integration": "jest test/integration",
+    "import-mongo": "npm run import-config && npm run import-domain && npm run import-pool",
+    "import-config": "mongoimport --db IS_STOR_TEST --collection txs-config data/config.txs",
+    "import-domain": "mongoimport --db IS_STOR_TEST --collection txs-domain data/domain.txs",
+    "import-pool": "  mongoimport --db IS_STOR_TEST --collection txs-pool data/pool.txs",
+    "export-mongo": "npm run export-config && npm run export-domain && npm run export-pool",
+    "export-config": "mkdir -p data; mongoexport --db SOVRIN_TESTNET --collection txs-config | head -300 > data/config.txs",
+    "export-domain": "mkdir -p data; mongoexport --db SOVRIN_TESTNET --collection txs-domain | head -300 > data/domain.txs",
+    "export-pool": "  mkdir -p data; mongoexport --db SOVRIN_TESTNET --collection txs-pool   | head -300 > data/pool.txs",
+    "elastic:delete:test": "bash delete-integration-test-es-indices.sh"
   },
   "dependencies": {
-    "mongodb": "^3.1.10"
+    "@elastic/elasticsearch": "^7.3.0",
+    "mongodb": "^3.3.4",
+    "node-persist": "^3.0.4",
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "jest": "^23.6.0",
-    "jest-cli": "^23.6.0",
-    "@types/jest": "^23.3.10"
+    "canonical-json": "0.0.4",
+    "geoip-lite": "^1.3.8",
+    "@types/node-persist": "0.0.33",
+    "@types/jest": "^25.1.3",
+    "jest": "^25.1.0",
+    "jest-cli": "^25.1.0",
+    "sleep-promise": "^8.0.1",
+    "standard": "^14.3.1",
+    "rimraf": "^3.0.0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": []
 }

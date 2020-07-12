@@ -4,3 +4,8 @@ node_modules/
 .DS_Store
 secret/
 build-dockerhub.sh
+**/terraform.tfstate*
+**/terraform.tfvars
+**/.terraform/
+dump/
+**/tmp-indysdk
